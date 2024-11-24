@@ -3,10 +3,10 @@ name: ZAP Scan as DAST with GitHub Actions
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
 permissions:
   issues: write
 jobs:
