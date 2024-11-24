@@ -1,0 +1,43 @@
+name: SonarCloud SAST
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  sonarcloud:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout code
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Setup Node.js environment
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16 # Ensure it matches your application's version
+        cache: npm
+
+    # Install dependencies
+    - name: Install dependencies
+      run: npm install
+
+    # Build the project (if necessary)
+    - name: Build the project
+      run: npm run build
+
+    # SonarCloud Scan
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@v2
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      with:
+        args: >
+          -Dsonar.organization=dimdimuzun
+          -Dsonar.projectKey=dimdimuzun_juice-shop-github-actions
