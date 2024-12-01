@@ -19,7 +19,7 @@ jobs:
     name: Scan the web applications
     steps:
       - name: ZAP Scan
-        uses: zaproxy/action-baseline@v0.13.0
+        uses: zaproxy/action-baseline@v0.14.0
         with:
           target: 'https://demo.owasp-juice.shop'
           cmd_options: '-a'
