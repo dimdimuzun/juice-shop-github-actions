@@ -1,4 +1,4 @@
-name: Snyk
+name: SOFTWARE COMPOSITION ANALYSIS using Snyk
 
 on:
   push:
